@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 25rem;">
+    <div class="card-header">
+
+        <h5>Editing {{tuote.tuotenimi}} supplied by {{tuote.jaatelokioski.nimi}}</h5>
+
+        <div class="card-body">
+            <form method="post" action="/muokkaa-tuote-post/{{tuote.id}}/">
+
+                {%csrf_token %}
+                <div class="form-group">
+                    <label>price</label>
+                    <input type="number" name="hinta" value={{tuote.hinta}}>
+                </div>
+                <div class="form-group">
+                    <label>stock</label>
+                    <input type="number" name="varastomaara" value={{tuote.varastomaara}}>
+                </div>
+                <input type="submit" value="Update" class="btn btn-success btn-sm">
+                <input type="button" onclick="window.location.href='/tuotteet'" id="hide-btn"
+                    class="btn btn-secondary btn-sm" value="Cancel">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

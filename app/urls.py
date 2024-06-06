@@ -1,27 +1,24 @@
 from django.urls import path
-
-from app.views import aloitusview
-from .views import poistajaatelokioski, aloitusview, tuotelistview, jaatelokioskilistview, poistajaatelokioski, tuotteet_filtered
-from .views import lisaajaatelokioski, lisaatuote, poistatuote, confirmpoistatuote, confirmpoistajaatelokioski
-from .views import muokkaa_tuote_post, muokkaa_tuote_get, etsijaatelokioskit
+from .views import (
+    aloitusview, tuotelistview, lisaatuote, poistatuote, confirmpoistatuote, muokkaa_tuote_get,
+    muokkaa_tuote_post, tuotteet_filtered, jaatelokioskilistview, lisaajaatelokioski, confirmpoistajaatelokioski,
+    poistajaatelokioski, etsijaatelokioskit
+)
 
 urlpatterns = [
-    path('', aloitusview),
+    path('', aloitusview, name='aloitusview'),
 
-    
-    path('tuotteet/', tuotelistview),
-    path('lisaa-tuote/', lisaatuote),
-    path('poista-tuote/<int:id>/', poistatuote),
-    path('confirm-poista-tuote/<int:id>/', confirmpoistatuote),
-    path('tuotteet-by-jaatelokioski/<int:id>/', tuotteet_filtered),
-    path('muokkaa-tuote-get/<int:id>/', muokkaa_tuote_get),
-    path('muokkaa-tuote-post/<int:id>/', muokkaa_tuote_post), 
-    
+    path('tuotteet/', tuotelistview, name='tuotelist'),
+    path('lisaa-tuote/', lisaatuote, name='lisaatuote'),
+    path('poista-tuote/<int:id>/', poistatuote, name='poistatuote'),
+    path('confirm-poista-tuote/<int:id>/', confirmpoistatuote, name='confirmpoistatuote'),
+    path('tuotteet-by-jaatelokioski/<int:id>/', tuotteet_filtered, name='tuotteet_filtered'),
+    path('muokkaa-tuote-get/<int:id>/', muokkaa_tuote_get, name='muokkaa_tuote_get'),
+    path('muokkaa-tuote-post/<int:id>/', muokkaa_tuote_post, name='muokkaa_tuote_post'),
 
-    
-    path('jaatelokioskit/', jaatelokioskilistview),
-    path('lisaa-jaatelokioski/', lisaajaatelokioski),
-    path('poista-jaatelokioski/<int:id>/', poistajaatelokioski),
-    path('confirm-poista-jaatelokioski/<int:id>/', confirmpoistajaatelokioski),
-    path('etsi-jaatelokioskit/', etsijaatelokioskit),
+    path('jaatelokioskit/', jaatelokioskilistview, name='jaatelokioskilist'),
+    path('lisaa-jaatelokioski/', lisaajaatelokioski, name='lisaajaatelokioski'),
+    path('poista-jaatelokioski/<int:id>/', poistajaatelokioski, name='poistajaatelokioski'),
+    path('confirm-poista-jaatelokioski/<int:id>/', confirmpoistajaatelokioski, name='confirmpoistajaatelokioski'),
+    path('etsi-jaatelokioskit/', etsijaatelokioskit, name='etsijaatelokioskit'),
 ]
